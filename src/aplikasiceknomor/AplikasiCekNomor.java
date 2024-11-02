@@ -5,6 +5,8 @@
  */
 package aplikasiceknomor;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ADRIAN WIN
@@ -17,6 +19,14 @@ public class AplikasiCekNomor extends javax.swing.JFrame {
     public AplikasiCekNomor() {
         initComponents();
     }
+    public boolean isPrime(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +36,70 @@ public class AplikasiCekNomor extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
+        txtInput = new javax.swing.JTextField();
+        btnCek = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        lblHasil = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 380, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
-        );
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Aplikasi Cek Nomor Genap/Ganjil", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.ABOVE_TOP, new java.awt.Font("Roboto", 1, 18), new java.awt.Color(0, 102, 255))); // NOI18N
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        txtInput.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        txtInput.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInputFocusGained(evt);
+            }
+        });
+        txtInput.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInputKeyTyped(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 6.0;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 2, 2);
+        jPanel1.add(txtInput, gridBagConstraints);
+
+        btnCek.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        btnCek.setText("Cek");
+        btnCek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCekActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 2, 10);
+        jPanel1.add(btnCek, gridBagConstraints);
+
+        jLabel1.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jLabel1.setText("Masukan Angka");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 2, 2);
+        jPanel1.add(jLabel1, gridBagConstraints);
+
+        lblHasil.setFont(new java.awt.Font("Roboto", 3, 12)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.insets = new java.awt.Insets(2, 10, 2, 2);
+        jPanel1.add(lblHasil, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -48,19 +107,51 @@ public class AplikasiCekNomor extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtInputKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            evt.consume(); // Batalkan input jika bukan angka
+        }
+    }//GEN-LAST:event_txtInputKeyTyped
+
+    private void btnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekActionPerformed
+        try {
+            int number = Integer.parseInt(txtInput.getText());
+
+            // Cek apakah angka tersebut genap atau ganjil
+            String hasil = (number % 2 == 0) ? "Angka tersebut adalah Genap," : "Angka tersebut adalah Ganjil,";
+
+            // Cek apakah angka tersebut bilangan prima
+            if (isPrime(number)) {
+                hasil += " dan Bilangan Prima";
+            } else {
+                hasil += " dan Bukan Bilangan Prima";
+            }
+
+            // Tampilkan hasil di JOptionPane
+            JOptionPane.showMessageDialog(this, hasil, "Hasil", JOptionPane.INFORMATION_MESSAGE);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Input tidak valid. Masukkan angka saja.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnCekActionPerformed
+
+    private void txtInputFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInputFocusGained
+        txtInput.setText(""); // Kosongkan teks saat JTextField mendapat fokus
+    }//GEN-LAST:event_txtInputFocusGained
 
     /**
      * @param args the command line arguments
@@ -98,6 +189,10 @@ public class AplikasiCekNomor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCek;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblHasil;
+    private javax.swing.JTextField txtInput;
     // End of variables declaration//GEN-END:variables
 }
