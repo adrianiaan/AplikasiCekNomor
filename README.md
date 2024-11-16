@@ -101,7 +101,7 @@ NPM: 2210010491
 
 Kelas: 5A Reguler Pagi
 
-Tugas : Latihan 1 - Aplikasi Pertambahan Dua Angka
+Tugas : Tugas 1 - Aplikasi Pertambahan Dua Angka
 
 Fakultas : Fakultas Teknologi Informasi (FTI)
 
